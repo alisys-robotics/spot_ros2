@@ -81,6 +81,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         executable="spot_ros2",
         name="spot_ros2",
         output="screen",
+        respawn=True,
         parameters=[configured_params, spot_driver_params],
         namespace=spot_name,
     )
@@ -91,6 +92,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         executable="corrected_odom",
         name="corrected_odom",
         output="screen",
+        respawn=True,
         parameters=[configured_params, spot_driver_params],
         namespace=spot_name,
     )
@@ -101,6 +103,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         executable="lease_manager_node",
         name="lease_manager_node",
         output="screen",
+        respawn=True,
         parameters=[configured_params],
         namespace=spot_name,
         condition=IfCondition(LaunchConfiguration("controllable")),
@@ -111,6 +114,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         package="spot_driver",
         executable="spot_inverse_kinematics_node",
         output="screen",
+        respawn=True,
         parameters=[configured_params],
         namespace=spot_name,
     )
@@ -120,6 +124,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         package="spot_driver",
         executable="object_synchronizer_node",
         output="screen",
+        respawn=True,
         parameters=[configured_params],
         namespace=spot_name,
     )
@@ -145,6 +150,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         package="robot_state_publisher",
         executable="robot_state_publisher",
         output="screen",
+        respawn=True,
         parameters=[robot_description_params],
         namespace=spot_name,
     )
@@ -154,6 +160,7 @@ def launch_setup(context: LaunchContext, ld: LaunchDescription) -> None:
         package="spot_driver",
         executable="state_publisher_node",
         output="screen",
+        respawn=True,
         parameters=[configured_params],
         namespace=spot_name,
     )
